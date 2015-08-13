@@ -22,7 +22,7 @@ task jenkinsTest (dependsOn: test) {
     doLast{
         println 'jenkins test in dolast loop'
         def timestamp = System.currentTimeMillis()
-        testResultsDir.eachFile { prinltln 'in file loop'
+        testResultsDir.eachFile { println 'in file loop'
                                         it.lastModified = timestamp }
     }
 }
