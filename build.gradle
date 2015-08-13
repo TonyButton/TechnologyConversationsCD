@@ -16,7 +16,7 @@ dependencies {
 
 //== Force JUnit to run every time by invalidating the results. Either this option or the file change option below are valid
 test { 
-println 'setting uptodate false"
+println 'setting uptodate false'
 outputsUpToDateWhen { false}
 
 }
