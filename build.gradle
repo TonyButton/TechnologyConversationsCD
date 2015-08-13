@@ -19,7 +19,9 @@ task jenkinsTest{
     inputs.files test.outputs.files
     doLast{
         def timestamp = System.currentTimeMillis()
-        test.testResultsDir.eachFile { it.lastModified = timestamp }
+        println timestamp
+        test.testResultsDir.eachFile { prinltln 'in file loop'
+                                        it.lastModified = timestamp }
     }
 }
  
