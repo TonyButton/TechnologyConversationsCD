@@ -29,7 +29,7 @@ task jenkinsTest (dependsOn: test) {
 }
  
 println 'about to builddepends'
-build.dependsOn(jenkinsTest)
+check.dependsOn(jenkinsTest)
 
 
 task wrapper(type: Wrapper) {
