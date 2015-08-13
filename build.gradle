@@ -15,6 +15,7 @@ dependencies {
 }
 
 task jenkinsTest{
+    println 'in Jenkins Test'
     inputs.files test.outputs.files
     doLast{
         def timestamp = System.currentTimeMillis()
@@ -22,6 +23,7 @@ task jenkinsTest{
     }
 }
  
+println 'about to builddepends'
 build.dependsOn(jenkinsTest)
 
 
