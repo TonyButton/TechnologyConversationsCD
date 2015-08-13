@@ -1,5 +1,5 @@
 package com.technologyconversations.articles.continuousdelivery;
-
+  
 public class Game {
 
     private Player player1;
