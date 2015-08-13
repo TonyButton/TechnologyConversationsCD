@@ -14,21 +14,27 @@ dependencies {
     testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
 }
 
-task jenkinsTest (dependsOn: test) {
-    description "=== Update the timestamp of test results if up to date.."
-    println 'in Jenkins Test'
-    inputs.files test.outputs.files
-    println 'jenkins test files'
-    doLast{
-        println 'jenkins test in dolast loop'
-        def timestamp = System.currentTimeMillis()
-        testResultsDir.eachFile { println 'in file loop'
-                                        it.lastModified = timestamp }
-    }
+//== Force JUnit to run every time by invalidating the results. Either this option or the file change option below are valid
+test { 
+println 'setting uptodate false"
+outputsUpToDateWhen { false}
+
 }
+
+
+
+// === This section includes a task to update the test result file timestamps so that JUnit parser doesn't fail in jenkins
+//task jenkinsTest (dependsOn: test) {
+//    description "=== Update the timestamp of test results if up to date.."
+//    inputs.files test.outputs.files
+//    println 'jenkins test files'
+//    doLast{
+//        def timestamp = System.currentTimeMillis()
+//        testResultsDir.eachFile {it.lastModified = timestamp }
+//    }
+//}
  
-println 'about to builddepends'
-check.dependsOn(jenkinsTest)
+//check.dependsOn(jenkinsTest)
 
 
 task wrapper(type: Wrapper) {
