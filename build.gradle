@@ -14,6 +14,17 @@ dependencies {
     testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
 }
 
+task jenkinsTest{
+    inputs.files test.outputs.files
+    doLast{
+        def timestamp = System.currentTimeMillis()
+        test.testResultsDir.eachFile { it.lastModified = timestamp }
+    }
+}
+ 
+build.dependsOn(jenkinsTest)
+
+
 task wrapper(type: Wrapper) {
     gradleVersion = '1.12'
 }
