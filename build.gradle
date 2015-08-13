@@ -17,7 +17,9 @@ dependencies {
 task jenkinsTest{
     println 'in Jenkins Test'
     inputs.files test.outputs.files
+    println 'jenkins test files'
     doLast{
+        println 'jenkins test in dolast loop'
         def timestamp = System.currentTimeMillis()
         println timestamp
         test.testResultsDir.eachFile { prinltln 'in file loop'
